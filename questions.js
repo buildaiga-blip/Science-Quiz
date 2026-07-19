@@ -1,4 +1,4 @@
-const quizData = [
+const scienceQuizData = [
     {
         topic: "Exploring the Investigative World of Science",
         level: "Easy",
