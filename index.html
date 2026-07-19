@@ -33,11 +33,25 @@
 
 <div id="main">
     <div class="quiz-card" id="quiz-box">
-<button id="mute-btn" onclick="toggleMute()" style="background:#7f8c8d; width: auto;">🔊 Mute / Unmute</button>
-        <div class="timer">Time: <span id="time">15</span>s</div>
-        <h2 id="q-text">Select a topic to start</h2>
-        <div id="options"></div>
-        <p id="feedback"></p>
+<!-- Mute button at the top -->
+    <button id="mute-btn" onclick="toggleMute()" style="background:#7f8c8d; width: auto; margin-bottom: 20px;">🔊 Mute / Unmute</button>
+    
+    <!-- New Stats Section -->
+    <div id="stats" style="margin-bottom: 10px; font-weight: bold; background: #ecf0f1; padding: 10px; border-radius: 8px;">
+        Topic: <span id="topic-display">None</span> | 
+        Progress: <span id="q-count">0</span>/40 | 
+        Score: <span id="score">0</span>
+    </div>
+
+    <!-- Timer, Question, and Options -->
+    <div class="timer">Time: <span id="time">15</span>s</div>
+    <h2 id="q-text">Select a topic to start</h2>
+    <div id="options"></div>
+    <p id="feedback"></p>
+
+    <!-- Navigation Buttons -->
+    <div style="display: flex; gap: 10px;">
+        <button onclick="prevQuestion()" style="background:#95a5a6;">Previous</button>
         <button onclick="loadQuestion()">Skip / Next Question</button>
     </div>
 </div>
