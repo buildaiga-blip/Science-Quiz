@@ -40,8 +40,8 @@ const scienceQuizData = {
   	{ "q": "What is the scientific method's goal?", "options": ["To argue", "To discover facts", "To write stories", "To confuse"], "correct": 1, "reason": "Science seeks truth through evidence.", "hint": "Truth." },
   	{ "q": "What is a constant in an experiment?", "options": ["The thing you change", "The thing kept the same", "The result", "The question"], "correct": 1, "reason": "Constants prevent other factors from affecting results.", "hint": "Unchanging." },
   	{ "q": "Which sense is used in observations?", "options": ["Sight", "Taste", "Smell", "All of the above"], "correct": 3, "reason": "All senses help gather data.", "hint": "Five senses." },
- 	{ "q": "What follows an observation?", "options": ["Asking a question", "Writing a law", "Going home", "Drawing"], "correct": 0, "reason": "Observations lead to questions about why things happen.", "hint": "Curiosity." }
-"Medium": [{ "q": "Which of these is a variable in an experiment?", "options": ["Constant", "Independent", "Result", "Theory"], "correct": 1, "reason": "An independent variable is what you change.", "hint": "It is the factor you manipulate." }],
+ 	{ "q": "What follows an observation?", "options": ["Asking a question", "Writing a law", "Going home", "Drawing"], "correct": 0, "reason": "Observations lead to questions about why things happen.", "hint": "Curiosity." }]
+	"Medium": [{ "q": "Which of these is a variable in an experiment?", "options": ["Constant", "Independent", "Result", "Theory"], "correct": 1, "reason": "An independent variable is what you change.", "hint": "It is the factor you manipulate." }],
         "Advance": [{ "q": "What is a peer-reviewed scientific paper?", "options": ["A draft", "A blog post", "Research reviewed by experts", "A school project"], "correct": 2, "reason": "It ensures validity through expert critique.", "hint": "It involves other scientists." }]
     },
     "The Invisible Living World: Beyond Our Naked Eye": {
