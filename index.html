@@ -131,30 +131,28 @@
         qObj.options.forEach((opt, i) => {
             let b = document.createElement('button');
     b.innerText = opt;
-    b.onclick = () => {
-        // 1. Check if already answered in this session
-        if (answeredQuestions.has(currentQ - 1)) return; 
+   b.onclick = () => {
+            // 1. Check if already answered
+            if (answeredQuestions.has(currentQ - 1)) return; 
 
-        // 2. Mark as answered immediately
-        answeredQuestions.add(currentQ - 1);
-        
-        // 3. Disable all option buttons so they cannot be clicked again
-        const allButtons = document.getElementById('options').querySelectorAll('button');
-        allButtons.forEach(btn => btn.disabled = true);
-    }
-                clearInterval(timer);
-                stats.answered++;
-                // Trigger sound based on result
-                if (i === qObj.correct) {
-                    triggerSound('correct');
-                    stats.correct++;
-                    document.getElementById('feedback').innerText = "Correct! " + qObj.reason;
-                } else {
-                    triggerSound('wrong');
-                    document.getElementById('feedback').innerText = "Wrong! " + qObj.reason + " (Hint: " + qObj.hint + ")";
-                }
-                updateStats();
-            };
+            // 2. Mark as answered and disable buttons
+            answeredQuestions.add(currentQ - 1);
+            const allButtons = document.getElementById('options').querySelectorAll('button');
+            allButtons.forEach(btn => btn.disabled = true);
+
+            // 3. Logic
+            clearInterval(timer);
+            stats.answered++;
+            if (i === qObj.correct) {
+                triggerSound('correct');
+                stats.correct++;
+                document.getElementById('feedback').innerText = "Correct! " + qObj.reason;
+            } else {
+                triggerSound('wrong');
+                document.getElementById('feedback').innerText = "Wrong! " + qObj.reason + " (Hint: " + qObj.hint + ")";
+            }
+            updateStats();
+        };
             optDiv.appendChild(b);
         });
         startTimer();
