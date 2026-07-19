@@ -71,6 +71,7 @@
     let currentPool = [];
     let currentQ = 0;
     let timer;
+    let stats = { asked: 0, answered: 0, correct: 0 };
 
     // 2. Audio Helper
     function triggerSound(type) {
@@ -97,8 +98,15 @@
             if (t <= 0) { clearInterval(timer); loadQuestion(); }
         }, 1000);
     }
+    function updateStats() { // ADD THIS
+    document.getElementById('q-count').innerText = stats.asked;
+    document.getElementById('score').innerText = stats.correct;
+}
 
     function renderQuiz(topic) {
+        document.getElementById('topic-display').innerText = topic; // ADD THIS
+    stats = { asked: 0, answered: 0, correct: 0 }; // ADD THIS
+    updateStats();
         // Play music on click
         sounds.bg.play().catch(e => console.log("Waiting for interaction"));
         
@@ -108,7 +116,9 @@
         loadQuestion();
     }
 
-    function loadQuestion() {
+    function loadQuestion(isBack = false) {
+        if (!isBack) stats.asked++; // ADD THIS
+    updateStats();
         if (currentQ >= currentPool.length) { alert("Topic Complete!"); return; }
         const qObj = currentPool[currentQ++];
         document.getElementById('q-text').innerText = qObj.q;
@@ -121,19 +131,30 @@
             b.innerText = opt;
             b.onclick = () => {
                 clearInterval(timer);
+                stats.answered++;
                 // Trigger sound based on result
                 if (i === qObj.correct) {
                     triggerSound('correct');
+                    stats.correct++;
                     document.getElementById('feedback').innerText = "Correct! " + qObj.reason;
                 } else {
                     triggerSound('wrong');
                     document.getElementById('feedback').innerText = "Wrong! " + qObj.reason + " (Hint: " + qObj.hint + ")";
                 }
+                updateStats();
             };
             optDiv.appendChild(b);
         });
         startTimer();
     }
+    function prevQuestion() { // ADD THIS
+    if (currentQ > 1) {
+        currentQ -= 2; 
+        loadQuestion(true);
+    } else {
+        alert("This is the first question!");
+    }
+}
 
     // Populate Sidebar
     const list = document.getElementById('topic-list');
