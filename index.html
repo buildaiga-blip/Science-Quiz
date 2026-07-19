@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NCERT Class 8 Science Quiz</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; display: flex; background: #f4f7f6; margin: 0; }
+        #sidebar { width: 260px; background: #2c3e50; color: white; height: 100vh; padding: 20px; }
+        #main { flex-grow: 1; padding: 40px; display: flex; justify-content: center; }
+        .quiz-card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); width: 100%; max-width: 600px; transition: opacity 0.5s; }
+        button { display: block; width: 100%; margin: 10px 0; padding: 12px; cursor: pointer; border-radius: 8px; border: none; background: #3498db; color: white; }
+        button:hover { background: #2980b9; }
+        .timer { font-size: 1.5em; color: #e74c3c; font-weight: bold; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+<div id="sidebar">
+    <h3>Topics</h3>
+    <div id="topic-list"></div>
+    <hr>
+    <h3>Difficulty</h3>
+    <select id="difficulty" style="width:100%; padding:10px;">
+        <option value="Beginner">Beginner</option>
+        <option value="Medium">Medium</option>
+        <option value="Advance">Advance</option>
+    </select>
+</div>
+
+<div id="main">
+    <div class="quiz-card" id="quiz-box">
+<button id="mute-btn" onclick="toggleMute()" style="background:#7f8c8d; width: auto;">🔊 Mute / Unmute</button>
+        <div class="timer">Time: <span id="time">15</span>s</div>
+        <h2 id="q-text">Select a topic to start</h2>
+        <div id="options"></div>
+        <p id="feedback"></p>
+        <button onclick="loadQuestion()">Skip / Next Question</button>
+    </div>
+</div>
+
+<!-- Load your data -->
+<script src="questions.js"></script>
+<script>
+    // 1. Global Setup
+    const sounds = {
+        bg: new Audio('background.mp3'),
+        correct: new Audio('correct.mp3'),
+        wrong: new Audio('wrong.mp3')
+    };
+    sounds.bg.loop = true;
+    sounds.bg.volume = 0.3;
+
+    let currentPool = [];
+    let currentQ = 0;
+    let timer;
+
+    // 2. Audio Helper
+    function triggerSound(type) {
+        sounds[type].currentTime = 0;
+        sounds[type].play().catch(e => console.log("Audio play blocked"));
+    }
+
+    function toggleMute() {
+        const isMuted = sounds.bg.muted;
+        sounds.bg.muted = !isMuted;
+        sounds.correct.muted = !isMuted;
+        sounds.wrong.muted = !isMuted;
+        document.getElementById('mute-btn').innerText = sounds.bg.muted ? "🔇 Unmute" : "🔊 Mute";
+    }
+
+    // 3. Quiz Logic
+    function startTimer() {
+        let t = 15;
+        document.getElementById('time').innerText = t;
+        clearInterval(timer);
+        timer = setInterval(() => {
+            t--;
+            document.getElementById('time').innerText = t;
+            if (t <= 0) { clearInterval(timer); loadQuestion(); }
+        }, 1000);
+    }
+
+    function renderQuiz(topic) {
+        // Play music on click
+        sounds.bg.play().catch(e => console.log("Waiting for interaction"));
+        
+        const level = document.getElementById('difficulty').value;
+        currentPool = [...scienceQuizData[topic][level]].sort(() => Math.random() - 0.5);
+        currentQ = 0;
+        loadQuestion();
+    }
+
+    function loadQuestion() {
+        if (currentQ >= currentPool.length) { alert("Topic Complete!"); return; }
+        const qObj = currentPool[currentQ++];
+        document.getElementById('q-text').innerText = qObj.q;
+        document.getElementById('feedback').innerText = "";
+        const optDiv = document.getElementById('options');
+        optDiv.innerHTML = "";
+        
+        qObj.options.forEach((opt, i) => {
+            let b = document.createElement('button');
+            b.innerText = opt;
+            b.onclick = () => {
+                clearInterval(timer);
+                // Trigger sound based on result
+                if (i === qObj.correct) {
+                    triggerSound('correct');
+                    document.getElementById('feedback').innerText = "Correct! " + qObj.reason;
+                } else {
+                    triggerSound('wrong');
+                    document.getElementById('feedback').innerText = "Wrong! " + qObj.reason + " (Hint: " + qObj.hint + ")";
+                }
+            };
+            optDiv.appendChild(b);
+        });
+        startTimer();
+    }
+
+    // Populate Sidebar
+    const list = document.getElementById('topic-list');
+    Object.keys(scienceQuizData).forEach(topic => {
+        let b = document.createElement('button');
+        b.innerText = topic;
+        b.onclick = () => renderQuiz(topic);
+        list.appendChild(b);
+    });
+</script>
+</body>
+</html>
