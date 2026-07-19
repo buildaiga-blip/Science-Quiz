@@ -1,144 +1,93 @@
-const scienceQuizData = {
-    "Exploring Forces": {
-        "Beginner": [
-            {
-                q: "A push or pull on an object is called...",
-                options: ["Force", "Energy", "Work", "Power"],
-                correct: 0,
-                hint: "It starts with the letter F.",
-                reason: "A force is a push or pull acting upon an object."
-            },
-            {
-                q: "Which unit is used to measure force?",
-                options: ["Newton", "Joule", "Watt", "Pascal"],
-                correct: 0,
-                hint: "It is named after Isaac.",
-                reason: "The SI unit of force is the Newton (N)."
-            },
-            {
-                q: "Gravity is an example of...",
-                options: ["Contact Force", "Non-contact Force", "Friction", "Push"],
-                correct: 1,
-                hint: "It works even at a distance.",
-                reason: "Gravity pulls objects without touching them."
-            }
-        ],
-        "Medium": [
-            {
-                q: "If two forces act in the same direction, they...",
-                options: ["Cancel out", "Add up", "Subtract", "None"],
-                correct: 1,
-                hint: "They work together as a team.",
-                reason: "Forces in the same direction add together."
-            },
-            {
-                q: "Pressure is defined as...",
-                options: ["Force / Area", "Area / Force", "Mass / Area", "Force × Area"],
-                correct: 0,
-                hint: "It depends on surface area.",
-                reason: "Pressure is force applied per unit area."
-            },
-            {
-                q: "When you walk, which force helps you not slip?",
-                options: ["Gravity", "Friction", "Magnetic", "Tension"],
-                correct: 1,
-                hint: "It resists movement.",
-                reason: "Friction provides the grip needed to walk."
-            }
-        ],
-        "Advance": [
-            {
-                q: "If a force is applied over a smaller area, pressure is...",
-                options: ["Lower", "Higher", "Constant", "Zero"],
-                correct: 1,
-                hint: "Think of a needle tip versus a blunt pencil.",
-                reason: "Smaller area results in higher pressure."
-            },
-            {
-                q: "An object will move if the forces acting on it are...",
-                options: ["Balanced", "Unbalanced", "Equal", "Zero"],
-                correct: 1,
-                hint: "One side must be stronger than the other.",
-                reason: "Unbalanced forces cause a change in motion."
-            },
-            {
-                q: "What is the pressure if 20N is applied on 4m²?",
-                options: ["80 Pa", "5 Pa", "16 Pa", "0.2 Pa"],
-                correct: 1,
-                hint: "Divide Force by Area.",
-                reason: "20 / 4 = 5 Pascals."
-            }
-        ]
+const quizData = [
+    {
+        topic: "Exploring the Investigative World of Science",
+        level: "Easy",
+        question: "What is the first step of the scientific method?",
+        options: ["Experiment", "Observation", "Conclusion", "Hypothesis"],
+        answer: "Observation"
     },
-    "Cell Structure": {
-        "Beginner": [
-            {
-                q: "Which organelle is the control center of the cell?",
-                options: ["Nucleus", "Vacuole", "Mitochondria", "Cytoplasm"],
-                correct: 0,
-                hint: "It acts like the cell's brain.",
-                reason: "The Nucleus directs all cell activities."
-            },
-            {
-                q: "What gives plant cells their rigid shape?",
-                options: ["Cell Membrane", "Cell Wall", "Cytoplasm", "Chloroplast"],
-                correct: 1,
-                hint: "Animal cells do not have this.",
-                reason: "The Cell Wall provides structural support in plants."
-            },
-            {
-                q: "Which part of the cell makes proteins?",
-                options: ["Nucleus", "Mitochondria", "Ribosome", "Golgi body"],
-                correct: 2,
-                hint: "They are tiny dot-like structures.",
-                reason: "Ribosomes are the site of protein synthesis."
-            }
-        ],
-        "Medium": [
-            {
-                q: "Which organelle is known as the 'powerhouse'?",
-                options: ["Nucleus", "Mitochondria", "Ribosome", "Cell Wall"],
-                correct: 1,
-                hint: "It produces energy.",
-                reason: "Mitochondria generate most of the cell's energy supply."
-            },
-            {
-                q: "What is the jelly-like substance inside a cell?",
-                options: ["Plasma", "Cytoplasm", "Nucleoplasm", "Sap"],
-                correct: 1,
-                hint: "It fills the space between organelles.",
-                reason: "Cytoplasm is the fluid that fills the cell."
-            },
-            {
-                q: "Where does photosynthesis happen in a plant cell?",
-                options: ["Mitochondria", "Nucleus", "Chloroplast", "Vacuole"],
-                correct: 2,
-                hint: "It contains green pigment.",
-                reason: "Chloroplasts contain chlorophyll and conduct photosynthesis."
-            }
-        ],
-        "Advance": [
-            {
-                q: "Which cell organelle is known as the suicide bag?",
-                options: ["Ribosome", "Mitochondria", "Lysosome", "Nucleus"],
-                correct: 2,
-                hint: "It contains digestive enzymes.",
-                reason: "Lysosomes contain enzymes that can digest the cell itself."
-            },
-            {
-                q: "What is the main function of the cell membrane?",
-                options: ["Make food", "Store water", "Control what enters/exits", "Produce energy"],
-                correct: 2,
-                hint: "It acts like a security guard.",
-                reason: "It is selectively permeable, regulating cell traffic."
-            },
-            {
-                q: "Which organism is single-celled (unicellular)?",
-                options: ["Human", "Amoeba", "Tree", "Dog"],
-                correct: 1,
-                hint: "It constantly changes shape.",
-                reason: "An Amoeba consists of only one cell."
-            }
-        ]
+    {
+        topic: "The Invisible Living World: Beyond Our Naked Eye",
+        level: "Medium",
+        question: "Which instrument is used to view microorganisms?",
+        options: ["Telescope", "Microscope", "Stethoscope", "Periscope"],
+        answer: "Microscope"
+    },
+    {
+        topic: "Health: The Ultimate Treasure",
+        level: "Hard",
+        question: "Which vitamin deficiency causes Scurvy?",
+        options: ["Vitamin A", "Vitamin B", "Vitamin C", "Vitamin D"],
+        answer: "Vitamin C"
+    },
+    {
+        topic: "Electricity: Magnetic and Heating Effects",
+        level: "Easy",
+        question: "What device converts electrical energy into heat?",
+        options: ["Electric Heater", "Fan", "Light Bulb", "Motor"],
+        answer: "Electric Heater"
+    },
+    {
+        topic: "Exploring Forces",
+        level: "Medium",
+        question: "What force opposes motion between two surfaces?",
+        options: ["Gravity", "Friction", "Tension", "Magnetism"],
+        answer: "Friction"
+    },
+    {
+        topic: "Pressure, Winds, Storms, and Cyclones",
+        level: "Hard",
+        question: "In the eye of a cyclone, the pressure is:",
+        options: ["Very High", "Very Low", "Normal", "Increasing"],
+        answer: "Very Low"
+    },
+    {
+        topic: "Particulate Nature of Matter",
+        level: "Easy",
+        question: "Which state of matter has a fixed volume but no fixed shape?",
+        options: ["Solid", "Liquid", "Gas", "Plasma"],
+        answer: "Liquid"
+    },
+    {
+        topic: "Nature of Matter: Elements, Compounds, and Mixtures",
+        level: "Medium",
+        question: "Which of these is a pure substance?",
+        options: ["Air", "Sea Water", "Gold", "Soil"],
+        answer: "Gold"
+    },
+    {
+        topic: "The Amazing World of Solutes, Solvents, and Solutions",
+        level: "Hard",
+        question: "What is known as the universal solvent?",
+        options: ["Alcohol", "Oil", "Water", "Acetone"],
+        answer: "Water"
+    },
+    {
+        topic: "Light: Mirrors and Lenses",
+        level: "Easy",
+        question: "Which mirror produces an image of the same size as the object?",
+        options: ["Concave", "Convex", "Plane", "None"],
+        answer: "Plane"
+    },
+    {
+        topic: "Keeping Time with the Skies",
+        level: "Medium",
+        question: "What movement of Earth determines a 'day'?",
+        options: ["Orbit", "Rotation", "Gravity", "Atmosphere"],
+        answer: "Rotation"
+    },
+    {
+        topic: "How Nature Works in Harmony",
+        level: "Hard",
+        question: "What is the process by which plants make food?",
+        options: ["Respiration", "Photosynthesis", "Transpiration", "Digestion"],
+        answer: "Photosynthesis"
+    },
+    {
+        topic: "Our Home: Earth, a Unique Life Sustaining Planet",
+        level: "Easy",
+        question: "Which gas is most abundant in Earth's atmosphere?",
+        options: ["Oxygen", "Carbon Dioxide", "Nitrogen", "Hydrogen"],
+        answer: "Nitrogen"
     }
-};
+];
