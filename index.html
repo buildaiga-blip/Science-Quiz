@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,66 +7,55 @@
         body { font-family: 'Segoe UI', sans-serif; display: flex; background: #f4f7f6; margin: 0; }
         #sidebar { width: 260px; background: #2c3e50; color: white; height: 100vh; padding: 20px;display: flex;flex-direction: column; }
         #main { flex-grow: 1; padding: 40px; display: flex; justify-content: center; }
-        .quiz-card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); width: 100%; max-width: 600px; transition: opacity 0.5s; }
+        .quiz-card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); width: 100%; max-width: 600px; }
         button { display: block; width: 100%; margin: 10px 0; padding: 12px; cursor: pointer; border-radius: 8px; border: none; background: #3498db; color: white; }
         button:hover { background: #2980b9; }
         .timer { font-size: 1.5em; color: #e74c3c; font-weight: bold; margin-bottom: 10px; }
+        
+        /* Blink Animation */
+        .blink-correct {
+            animation: blinker 0.8s linear infinite;
+            background-color: #27ae60 !important;
+            border: 3px solid #2ecc71 !important;
+        }
+        @keyframes blinker { 50% { opacity: 0.5; } }
+        .wrong-style { background-color: #c0392b !important; }
     </style>
 </head>
 <body>
 
 <div id="sidebar">
-    <!-- Difficulty Section (Top) -->
     <h3>Difficulty</h3>
     <select id="difficulty" style="width:100%; padding:10px; margin-bottom: 10px;">
         <option value="Beginner">Beginner</option>
         <option value="Medium">Medium</option>
         <option value="Advance">Advance</option>
     </select>
-    <hr style="width:100%">
-
-    <!-- Topics Section (Bottom, will now scroll) -->
     <h3>Topics</h3>
     <div id="topic-list" style="flex-grow: 1; overflow-y: auto;"></div>
-    </div>
- 
+</div>
 
 <div id="main">
     <div class="quiz-card" id="quiz-box">
-<!-- Mute button at the top -->
-    <button id="mute-btn" onclick="toggleMute()" style="background:#7f8c8d; width: auto; margin-bottom: 20px;">🔊 Mute / Unmute</button>
-    
-    <!-- New Stats Section -->
-    <div id="stats" style="margin-bottom: 10px; font-weight: bold; background: #ecf0f1; padding: 10px; border-radius: 8px;">
-        Topic: <span id="topic-display">None</span> | 
-        Progress: <span id="q-count">0</span>/40 | 
-        Score: <span id="score">0</span>
-    </div>
-
-    <!-- Timer, Question, and Options -->
-    <div class="timer">Time: <span id="time">15</span>s</div>
-    <h2 id="q-text">Select a topic to start</h2>
-    <div id="options"></div>
-    <p id="feedback"></p>
-
-    <!-- Navigation Buttons -->
-    <div style="display: flex; gap: 10px;">
-        <button onclick="prevQuestion()" style="background:#95a5a6;">Previous</button>
-        <button onclick="loadQuestion()">Skip / Next Question</button>
+        <button id="mute-btn" onclick="toggleMute()" style="background:#7f8c8d; width: auto; margin-bottom: 20px;">🔊 Mute / Unmute</button>
+        <div id="stats" style="margin-bottom: 10px; font-weight: bold; background: #ecf0f1; padding: 10px; border-radius: 8px;">
+            Topic: <span id="topic-display">None</span> | Progress: <span id="q-count">0</span>/40 | Score: <span id="score">0</span>
+        </div>
+        <div class="timer">Time: <span id="time">15</span>s</div>
+        <h2 id="q-text">Select a topic to start</h2>
+        <div id="options"></div>
+        <p id="feedback"></p>
+        <div style="display: flex; gap: 10px;">
+            <button onclick="prevQuestion()" style="background:#95a5a6;">Previous</button>
+            <button onclick="loadQuestion()">Skip / Next Question</button>
+        </div>
     </div>
 </div>
 
-<!-- Load your data -->
 <script src="questions.js"></script>
 <script>
-    // 1. Global Setup
-    const sounds = {
-        bg: new Audio('background.mp3'),
-        correct: new Audio('correct.mp3'),
-        wrong: new Audio('wrong.mp3')
-    };
-    sounds.bg.loop = true;
-    sounds.bg.volume = 0.3;
+    const sounds = { bg: new Audio('background.mp3'), correct: new Audio('correct.mp3'), wrong: new Audio('wrong.mp3') };
+    sounds.bg.loop = true; sounds.bg.volume = 0.3;
 
     let currentPool = [];
     let currentQ = 0;
@@ -74,21 +63,14 @@
     let stats = { asked: 0, answered: 0, correct: 0 };
     let answeredQuestions = new Set();
 
-    // 2. Audio Helper
-    function triggerSound(type) {
-        sounds[type].currentTime = 0;
-        sounds[type].play().catch(e => console.log("Audio play blocked"));
-    }
+    function triggerSound(type) { sounds[type].currentTime = 0; sounds[type].play().catch(e => {}); }
 
     function toggleMute() {
-        const isMuted = sounds.bg.muted;
-        sounds.bg.muted = !isMuted;
-        sounds.correct.muted = !isMuted;
-        sounds.wrong.muted = !isMuted;
-        document.getElementById('mute-btn').innerText = sounds.bg.muted ? "🔇 Unmute" : "🔊 Mute";
+        const muted = !sounds.bg.muted;
+        Object.values(sounds).forEach(s => s.muted = muted);
+        document.getElementById('mute-btn').innerText = muted ? "🔇 Unmute" : "🔊 Mute";
     }
 
-    // 3. Quiz Logic
     function startTimer() {
         let t = 15;
         document.getElementById('time').innerText = t;
@@ -99,19 +81,18 @@
             if (t <= 0) { clearInterval(timer); loadQuestion(); }
         }, 1000);
     }
-    function updateStats() { // ADD THIS
-    document.getElementById('q-count').innerText = stats.asked;
-    document.getElementById('score').innerText = stats.correct;
-}
+
+    function updateStats() {
+        document.getElementById('q-count').innerText = stats.asked;
+        document.getElementById('score').innerText = stats.correct;
+    }
 
     function renderQuiz(topic) {
-        document.getElementById('topic-display').innerText = topic; // ADD THIS
-    stats = { asked: 0, answered: 0, correct: 0 };
-    answeredQuestions.clear();
-    updateStats();
-        // Play music on click
-        sounds.bg.play().catch(e => console.log("Waiting for interaction"));
-        
+        document.getElementById('topic-display').innerText = topic;
+        stats = { asked: 0, answered: 0, correct: 0 };
+        answeredQuestions.clear();
+        updateStats();
+        sounds.bg.play().catch(e => {});
         const level = document.getElementById('difficulty').value;
         currentPool = [...scienceQuizData[topic][level]].sort(() => Math.random() - 0.5);
         currentQ = 0;
@@ -119,8 +100,8 @@
     }
 
     function loadQuestion(isBack = false) {
-        if (!isBack) stats.asked++; // ADD THIS
-    updateStats();
+        if (!isBack) stats.asked++;
+        updateStats();
         if (currentQ >= currentPool.length) { alert("Topic Complete!"); return; }
         const qObj = currentPool[currentQ++];
         document.getElementById('q-text').innerText = qObj.q;
@@ -130,43 +111,41 @@
         
         qObj.options.forEach((opt, i) => {
             let b = document.createElement('button');
-    b.innerText = opt;
-   b.onclick = () => {
-            // 1. Check if already answered
-            if (answeredQuestions.has(currentQ - 1)) return; 
+            b.innerText = opt;
+            b.onclick = () => {
+                if (answeredQuestions.has(currentQ - 1)) return; 
+                answeredQuestions.add(currentQ - 1);
+                
+                clearInterval(timer);
+                stats.answered++;
+                
+                // --- ADDED BLINK LOGIC ---
+                const allButtons = optDiv.querySelectorAll('button');
+                allButtons.forEach((btn, index) => {
+                    btn.disabled = true;
+                    if (index === qObj.correct) btn.classList.add('blink-correct');
+                    if (index === i && i !== qObj.correct) btn.classList.add('wrong-style');
+                });
 
-            // 2. Mark as answered and disable buttons
-            answeredQuestions.add(currentQ - 1);
-            const allButtons = document.getElementById('options').querySelectorAll('button');
-            allButtons.forEach(btn => btn.disabled = true);
-
-            // 3. Logic
-            clearInterval(timer);
-            stats.answered++;
-            if (i === qObj.correct) {
-                triggerSound('correct');
-                stats.correct++;
-                document.getElementById('feedback').innerText = "Correct! " + qObj.reason;
-            } else {
-                triggerSound('wrong');
-                document.getElementById('feedback').innerText = "Wrong! " + qObj.reason + " (Hint: " + qObj.hint + ")";
-            }
-            updateStats();
-        };
+                if (i === qObj.correct) {
+                    triggerSound('correct');
+                    stats.correct++;
+                    document.getElementById('feedback').innerText = "Correct! " + qObj.reason;
+                } else {
+                    triggerSound('wrong');
+                    document.getElementById('feedback').innerText = "Wrong! " + qObj.reason + " (Hint: " + qObj.hint + ")";
+                }
+                updateStats();
+            };
             optDiv.appendChild(b);
         });
         startTimer();
     }
-    function prevQuestion() { // ADD THIS
-    if (currentQ > 1) {
-        currentQ -= 2; 
-        loadQuestion(true);
-    } else {
-        alert("This is the first question!");
-    }
-}
 
-    // Populate Sidebar
+    function prevQuestion() {
+        if (currentQ > 1) { currentQ -= 2; loadQuestion(true); } else { alert("First question!"); }
+    }
+
     const list = document.getElementById('topic-list');
     Object.keys(scienceQuizData).forEach(topic => {
         let b = document.createElement('button');
