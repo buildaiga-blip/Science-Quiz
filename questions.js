@@ -21,7 +21,7 @@ const scienceQuizData = {
   { "q": "What defines a fair test?", "options": ["Only one variable is changed", "No variables are changed", "All variables are changed", "The experiment is fast"], "correct": 0, "reason": "Changing one thing keeps results clear.", "hint": "One change only." },
   { "q": "What is the definition of a scientific 'theory'?", "options": ["A guess", "A proven, well-supported explanation", "A random thought", "A law of nature"], "correct": 1, "reason": "Theories explain 'why' phenomena occur.", "hint": "Validated explanation." },
   { "q": "Which axis is used for the independent variable on a graph?", "options": ["Y-axis", "Diagonal axis", "X-axis", "Z-axis"], "correct": 2, "reason": "Standard graph convention.", "hint": "Horizontal axis." },
-  { "q": "What is the main role of science?", "options": ["To guess the future", "To explain natural phenomena", "To build bridges only", "To ignore nature"], "correct": 3, "reason": "Understanding the world is the goal.", "hint": "Understanding." },
+  { "q": "What is the main role of science?", "options": ["To guess the future", "To explain natural phenomena", "To build bridges only", "To ignore nature"], "correct": 1, "reason": "Understanding the world is the goal.", "hint": "Understanding." },
   { "q": "Which of these is a measurement of mass?", "options": ["Centimeter", "Liter", "Second", "Kilogram"], "correct": 3, "reason": "Kg is the SI unit for mass.", "hint": "Mass unit." },
   { "q": "How should you smell a substance in a lab?", "options": ["Inhale directly", "Close your eyes", "Taste it", "Wafting"], "correct": 3, "reason": "Wafting prevents chemical intake.", "hint": "Fan the air." },
   { "q": "What is a 'law' in science?", "options": ["An explanation of why", "A guess", "An opinion", "A statement describing what happens"], "correct": 3, "reason": "Laws describe consistent patterns.", "hint": "Rule of nature." },
@@ -43,46 +43,484 @@ const scienceQuizData = {
   { "q": "Which of these is NOT a step in scientific method?", "options": ["Asking questions", "Hypothesizing", "Ignoring facts", "Collecting data"], "correct": 2, "reason": "Ignoring facts is anti-science.", "hint": "The wrong one." }
 ],
 	"Medium": [
-  { "q": "In a controlled experiment, why must only one variable be changed?", "options": ["To make the data collection faster", "To ensure results are attributable to that specific variable", "To comply with international standards", "To reduce the number of observations needed"], "correct": 1, "reason": "Changing multiple variables obscures the cause of the effect.", "hint": "Think 'fair testing'." },
-  { "q": "Which step in the scientific method addresses the 'why' of a phenomenon?", "options": ["Developing a theory", "Formulating a question", "Data collection", "Observation"], "correct": 0, "reason": "Theories offer explanatory frameworks.", "hint": "Explanatory framework." },
-  { "q": "How should a scientist handle an outlier in data?", "options": ["Delete it to improve the graph", "Ignore it and hope nobody notices", "Investigate the cause before acting", "Average it to hide error"], "correct": 2, "reason": "Anomalies may indicate error or a new discovery.", "hint": "Investigate, don't hide." },
-  { "q": "What is the primary purpose of writing a lab report?", "options": ["To prove intelligence", "To communicate methodology and findings clearly", "To fill up time", "To hide negative results"], "correct": 3, "reason": "Communication is essential for peer review.", "hint": "Sharing findings." },
-  { "q": "How is a hypothesis best defined?", "options": ["An indisputable scientific fact", "A tentative, testable explanation", "A summary of results", "A prediction not needing tests"], "correct": 1, "reason": "Hypotheses are starting points that must be testable.", "hint": "Tentative explanation." },
-  { "q": "Which axis represents the independent variable?", "options": ["The X-axis (horizontal)", "The Y-axis (vertical)", "The Z-axis", "The legend"], "correct": 0, "reason": "X-axis is for the input variable.", "hint": "Horizontal axis." },
-  { "q": "What is the role of a 'constant' in an experiment?", "options": ["To increase the speed of reaction", "To ensure all conditions remain identical", "To prevent external factors from influencing the result", "To serve as the main focus"], "correct": 2, "reason": "Constants ensure a fair test.", "hint": "Neutralizing outside influence." },
-  { "q": "Why is it important to use a large sample size?", "options": ["Easier documentation", "Reduces impact of random errors", "Required for mathematical graphs", "Ensures a faster finish"], "correct": 3, "reason": "Large samples provide reliable, representative data.", "hint": "Representative data." },
-  { "q": "Which characteristic is key to scientific inquiry?", "options": ["Accepting the first result", "Skepticism and willingness to revise", "Prioritizing personal belief", "Relying on intuition"], "correct": 1, "reason": "Science relies on continuous revision.", "hint": "Dynamic and revisable." },
-  { "q": "What does 'reproducibility' mean?", "options": ["The experiment was completed once", "Other researchers can get the same results", "The results matched the scientist's belief", "The experiment was expensive"], "correct": 2, "reason": "Others must be able to verify findings.", "hint": "Replication by others." },
-  { "q": "How does a scientific model help?", "options": ["Simplifies complex systems", "Makes results look impressive", "Replaces experiments", "Prevents all errors"], "correct": 0, "reason": "Models help represent complex systems.", "hint": "Simplifying complexity." },
-  { "q": "Straight line on a distance-time graph indicates:", "options": ["Stationary object", "Uniform speed", "Acceleration", "Direction change"], "correct": 1, "reason": "Constant slope = uniform motion.", "hint": "Uniform speed." },
-  { "q": "What is the risk of a 'biased' experiment?", "options": ["High precision", "Skewed conclusions", "Always fails", "Easy graph reading"], "correct": 2, "reason": "Bias undermines objectivity.", "hint": "Subjective influence." },
-  { "q": "What transforms raw data into information?", "options": ["Observation", "Analysis", "Hypothesizing", "Drafting"], "correct": 3, "reason": "Analysis reveals patterns.", "hint": "Interpreting findings." },
-  { "q": "Importance of SI units?", "options": ["Easy memory", "Universal language for science", "Cheaper to use", "Prevents all errors"], "correct": 1, "reason": "Ensures global consistency.", "hint": "Universal language." },
-  { "q": "Distinction between observation and inference?", "options": ["Observation uses senses; inference explains", "No difference", "Observation needs tools", "Inference is always fact"], "correct": 0, "reason": "Observation detects; inference interprets.", "hint": "Senses vs. interpretation." },
-  { "q": "What does 'falsifiability' mean?", "options": ["Incorrect hypothesis", "Capable of being proven false", "Poor design", "Fake result"], "correct": 1, "reason": "Claims must be testable.", "hint": "Capability of being disproven." },
-  { "q": "Function of a control variable?", "options": ["Change the outcome", "Isolate the independent variable", "Document final results", "Main study focus"], "correct": 2, "reason": "Isolates the specific factor being studied.", "hint": "Isolation of variables." },
-  { "q": "Quantitative vs. qualitative?", "options": ["Qualitative measures mass", "Qualitative is bubbles; quantitative is volume", "Quantitative uses numbers/units", "No difference"], "correct": 3, "reason": "Quantitative relies on numerical data.", "hint": "Numerical measurements." },
-  { "q": "Importance of experimental design?", "options": ["Optional", "Identifies pitfalls", "Only for chemistry", "Aesthetic"], "correct": 0, "reason": "Planning ensures accuracy.", "hint": "Planning phase." },
-  { "q": "When two experiments yield different results:", "options": ["Choose your expectation", "Repeat with stricter controls", "Discard both", "Ask an authority"], "correct": 1, "reason": "Inconsistencies require re-evaluation.", "hint": "Systematic re-evaluation." },
-  { "q": "What demonstrates 'thinking like a scientist'?", "options": ["Memorizing", "Questioning unexpected results", "Accepting printed results", "Avoiding failure"], "correct": 2, "reason": "Curiosity drives science.", "hint": "Inquisitive mindset." },
-  { "q": "In scientific terminology, what is a 'variable'?", "options": ["Constant factor", "Condition that changes", "Final measurement", "Lab equipment"], "correct": 3, "reason": "Variables are changing conditions.", "hint": "Changing conditions." },
-  { "q": "Why is 'skepticism' a virtue?", "options": ["Shows cynicism", "Encourages questioning evidence", "Slows researchers", "Prevents discovery"], "correct": 1, "reason": "Ensures rigorous claims.", "hint": "Critical questioning." },
-  { "q": "Metaphor of 'root' and 'kite'?", "options": ["Observation vs. exploration", "Random", "Living vs. non-living", "Variables"], "correct": 0, "reason": "Grounding vs. exploration.", "hint": "Grounding vs. exploration." },
-  { "q": "Effective mixture separation?", "options": ["Physical properties", "Boiling all", "Compound assumption", "Ignoring properties"], "correct": 1, "reason": "Physical properties guide separation.", "hint": "Physical properties." },
-  { "q": "Systematic vs. casual investigation?", "options": ["Expensive gear", "Structured/repeatable", "Pros only", "Computer-based"], "correct": 2, "reason": "Structure minimizes errors.", "hint": "Structured process." },
-  { "q": "Scientific response to unproven claims?", "options": ["Accept", "Seek empirical evidence", "Ignore", "Repeat"], "correct": 3, "reason": "Science requires evidence.", "hint": "Evidence-seeking." },
-  { "q": "Focus of ecosystem study?", "options": ["Predators", "Biotic and abiotic interactions", "Sunlight", "Species count"], "correct": 0, "reason": "Interdependence is key.", "hint": "Interdependence." },
-  { "q": "Meaning of 'data analysis'?", "options": ["Gathering", "Finding trends", "Drawing equipment", "Making up conclusions"], "correct": 1, "reason": "Analysis reveals patterns.", "hint": "Finding trends." },
-  { "q": "Step after completing an experiment?", "options": ["Compare to hypothesis", "Publish", "Throw away", "Start unrelated study"], "correct": 2, "reason": "Evaluation is key.", "hint": "Evaluation." },
-  { "q": "Why is Earth 'unique life-sustaining'?", "options": ["Largest", "Goldilocks zone/atmosphere", "Gravity", "Moons"], "correct": 3, "reason": "Liquid water capability.", "hint": "Goldilocks zone." },
-  { "q": "Looking through a microscope is:", "options": ["Observation", "Experimentation", "Hypothesizing", "Peer review"], "correct": 0, "reason": "Detecting is observation.", "hint": "Sensory expansion." },
-  { "q": "If data supports hypothesis?", "options": ["Proven forever", "Consistent in this instance", "Perfect experiment", "Law"], "correct": 1, "reason": "Science uses support, not proof.", "hint": "Consistency." },
-  { "q": "How models use planetary cycles?", "options": ["Predict patterns", "Replace moon", "Make observations unnecessary", "Force changes"], "correct": 2, "reason": "Models help forecast.", "hint": "Predictive tool." },
-  { "q": "Focus of classification of materials?", "options": ["Chemistry", "Physics", "Biology", "Astronomy"], "correct": 3, "reason": "Chemistry studies matter.", "hint": "Matter study." },
-  { "q": "Role of a question?", "options": ["Determines test goal", "Waste of time", "Test patience", "Replaces experiment"], "correct": 0, "reason": "Defines the scope.", "hint": "Defining the goal." },
-  { "q": "Why is ethics relevant?", "options": ["Dictates study topics", "Honesty/avoiding harm", "Expense", "Lab coat color"], "correct": 1, "reason": "Ensures integrity.", "hint": "Integrity and safety." },
-  { "q": "What is a 'scientific law'?", "options": ["A guess", "A rule based on repeated observation", "A theory's replacement", "An opinion"], "correct": 2, "reason": "Laws summarize patterns.", "hint": "Observed rule." },
-  { "q": "What is the final goal of investigation?", "options": ["To get an A grade", "To understand phenomena", "To buy equipment", "To be famous"], "correct": 3, "reason": "Understanding the world.", "hint": "The goal of science." }
+  { "q": "In a controlled experiment, why must only one variable be changed?",
+    "options": [
+      "To make the data collection faster",
+      "To ensure results are attributable to that specific variable",
+      "To comply with international standards",
+      "To reduce the number of observations needed"
+    ],
+    "correct": 1,
+    "reason": "Changing only one variable ensures that any effect seen is due to that variable alone.",
+    "hint": "Think 'fair testing'."
+  },
+  {
+    "q": "Which step in the scientific method addresses the 'why' of a phenomenon?",
+    "options": [
+      "Developing a theory",
+      "Formulating a question",
+      "Data collection",
+      "Observation"
+    ],
+    "correct": 0,
+    "reason": "Scientific theories provide explanations for why phenomena occur.",
+    "hint": "Explanatory framework."
+  },
+  {
+    "q": "How should a scientist handle an outlier in data?",
+    "options": [
+      "Delete it to improve the graph",
+      "Ignore it and hope nobody notices",
+      "Investigate the cause before acting",
+      "Average it to hide error"
+    ],
+    "correct": 2,
+    "reason": "Outliers should be investigated, as they may indicate error or reveal new information.",
+    "hint": "Investigate, don't hide."
+  },
+  {
+    "q": "What is the primary purpose of writing a lab report?",
+    "options": [
+      "To prove intelligence",
+      "To communicate methodology and findings clearly",
+      "To fill up time",
+      "To hide negative results"
+    ],
+    "correct": 1,
+    "reason": "A lab report communicates the methods and results so others can understand and evaluate the work.",
+    "hint": "Sharing findings."
+  },
+  {
+    "q": "How is a hypothesis best defined?",
+    "options": [
+      "An indisputable scientific fact",
+      "A tentative, testable explanation",
+      "A summary of results",
+      "A prediction not needing tests"
+    ],
+    "correct": 1,
+    "reason": "A hypothesis is a tentative explanation that must be testable by experiments or observations.",
+    "hint": "Tentative explanation."
+  },
+  {
+    "q": "Which axis represents the independent variable?",
+    "options": [
+      "The X-axis (horizontal)",
+      "The Y-axis (vertical)",
+      "The Z-axis",
+      "The legend"
+    ],
+    "correct": 0,
+    "reason": "By convention, the independent variable is plotted on the horizontal (X) axis.",
+    "hint": "Horizontal axis."
+  },
+  {
+    "q": "What is the role of a 'constant' in an experiment?",
+    "options": [
+      "To increase the speed of reaction",
+      "To ensure all conditions remain identical",
+      "To prevent external factors from influencing the result",
+      "To serve as the main focus"
+    ],
+    "correct": 2,
+    "reason": "Constants are kept the same to prevent other factors from influencing the result.",
+    "hint": "Neutralizing outside influence."
+  },
+  {
+    "q": "Why is it important to use a large sample size?",
+    "options": [
+      "Easier documentation",
+      "Reduces impact of random errors",
+      "Required for mathematical graphs",
+      "Ensures a faster finish"
+    ],
+    "correct": 1,
+    "reason": "A larger sample reduces random error and makes the results more representative of the whole.",
+    "hint": "Representative and reliable data."
+  },
+  {
+    "q": "Which characteristic is key to scientific inquiry?",
+    "options": [
+      "Accepting the first result",
+      "Skepticism and willingness to revise",
+      "Prioritizing personal belief",
+      "Relying on intuition"
+    ],
+    "correct": 1,
+    "reason": "Scientific inquiry requires skepticism and a willingness to revise ideas based on new evidence.",
+    "hint": "Dynamic and revisable."
+  },
+  {
+    "q": "What does 'reproducibility' mean?",
+    "options": [
+      "The experiment was completed once",
+      "Other researchers can get the same results",
+      "The results matched the scientist's belief",
+      "The experiment was expensive"
+    ],
+    "correct": 1,
+    "reason": "An experiment is reproducible if other researchers can repeat it and get similar results.",
+    "hint": "Replication by others."
+  },
+  {
+    "q": "How does a scientific model help?",
+    "options": [
+      "Simplifies complex systems",
+      "Makes results look impressive",
+      "Replaces experiments",
+      "Prevents all errors"
+    ],
+    "correct": 0,
+    "reason": "Models simplify complex systems so scientists can understand and predict behavior more easily.",
+    "hint": "Simplifying complexity."
+  },
+  {
+    "q": "Straight line on a distance-time graph indicates:",
+    "options": [
+      "Stationary object",
+      "Uniform speed",
+      "Acceleration",
+      "Direction change"
+    ],
+    "correct": 1,
+    "reason": "A straight distance–time graph shows the object is moving at uniform speed.",
+    "hint": "Uniform speed."
+  },
+  {
+    "q": "What is the risk of a 'biased' experiment?",
+    "options": [
+      "High precision",
+      "Skewed conclusions",
+      "Always fails",
+      "Easy graph reading"
+    ],
+    "correct": 1,
+    "reason": "Bias distorts data and can lead to skewed, unreliable conclusions.",
+    "hint": "Subjective influence."
+  },
+  {
+    "q": "What transforms raw data into information?",
+    "options": [
+      "Observation",
+      "Analysis",
+      "Hypothesizing",
+      "Drafting"
+    ],
+    "correct": 1,
+    "reason": "Analysis reveals patterns and relationships in data, turning it into useful information.",
+    "hint": "Interpreting findings."
+  },
+  {
+    "q": "Importance of SI units?",
+    "options": [
+      "Easy memory",
+      "Universal language for science",
+      "Cheaper to use",
+      "Prevents all errors"
+    ],
+    "correct": 1,
+    "reason": "SI units provide a universal language that allows scientists worldwide to compare results.",
+    "hint": "Universal language."
+  },
+  {
+    "q": "Distinction between observation and inference?",
+    "options": [
+      "Observation uses senses; inference explains",
+      "No difference",
+      "Observation needs tools",
+      "Inference is always fact"
+    ],
+    "correct": 0,
+    "reason": "Observation is gathering data with the senses; inference interprets those observations.",
+    "hint": "Senses vs. interpretation."
+  },
+  {
+    "q": "What does 'falsifiability' mean?",
+    "options": [
+      "Incorrect hypothesis",
+      "Capable of being proven false",
+      "Poor design",
+      "Fake result"
+    ],
+    "correct": 1,
+    "reason": "A claim is scientific if it can, in principle, be tested and shown false.",
+    "hint": "Capability of being disproven."
+  },
+  {
+    "q": "Function of a control variable?",
+    "options": [
+      "Change the outcome",
+      "Isolate the independent variable",
+      "Document final results",
+      "Main study focus"
+    ],
+    "correct": 1,
+    "reason": "Control variables are kept constant to isolate the effect of the independent variable.",
+    "hint": "Isolation of variables."
+  },
+  {
+    "q": "Quantitative vs. qualitative?",
+    "options": [
+      "Qualitative measures mass",
+      "Qualitative is bubbles; quantitative is volume",
+      "Quantitative uses numbers/units",
+      "No difference"
+    ],
+    "correct": 2,
+    "reason": "Quantitative observations use numerical values and units, while qualitative are descriptive.",
+    "hint": "Numerical measurements."
+  },
+  {
+    "q": "Importance of experimental design?",
+    "options": [
+      "Optional",
+      "Identifies pitfalls",
+      "Only for chemistry",
+      "Aesthetic"
+    ],
+    "correct": 1,
+    "reason": "Good design helps identify potential problems and ensures accurate, reliable results.",
+    "hint": "Planning phase."
+  },
+  {
+    "q": "When two experiments yield different results:",
+    "options": [
+      "Choose your expectation",
+      "Repeat with stricter controls",
+      "Discard both",
+      "Ask an authority"
+    ],
+    "correct": 1,
+    "reason": "Different results require repeating the experiments with tighter controls to find the cause.",
+    "hint": "Systematic re-evaluation."
+  },
+  {
+    "q": "What demonstrates 'thinking like a scientist'?",
+    "options": [
+      "Memorizing",
+      "Questioning unexpected results",
+      "Accepting printed results",
+      "Avoiding failure"
+    ],
+    "correct": 1,
+    "reason": "Thinking like a scientist involves questioning unexpected results and seeking explanations.",
+    "hint": "Inquisitive mindset."
+  },
+  {
+    "q": "In scientific terminology, what is a 'variable'?",
+    "options": [
+      "Constant factor",
+      "Condition that changes",
+      "Final measurement",
+      "Lab equipment"
+    ],
+    "correct": 1,
+    "reason": "A variable is any condition that can change and affect the outcome of an experiment.",
+    "hint": "Changing conditions."
+  },
+  {
+    "q": "Why is 'skepticism' a virtue?",
+    "options": [
+      "Shows cynicism",
+      "Encourages questioning evidence",
+      "Slows researchers",
+      "Prevents discovery"
+    ],
+    "correct": 1,
+    "reason": "Skepticism encourages careful questioning of evidence and prevents accepting claims too easily.",
+    "hint": "Critical questioning."
+  },
+  {
+    "q": "Metaphor of 'root' and 'kite'?",
+    "options": [
+      "Observation vs. exploration",
+      "Random",
+      "Living vs. non-living",
+      "Variables"
+    ],
+    "correct": 0,
+    "reason": "Roots represent grounding in observation; kites represent exploration and new ideas.",
+    "hint": "Grounding vs. exploration."
+  },
+  {
+    "q": "Effective mixture separation?",
+    "options": [
+      "Physical properties",
+      "Boiling all",
+      "Compound assumption",
+      "Ignoring properties"
+    ],
+    "correct": 0,
+    "reason": "Mixtures are separated based on differences in physical properties like boiling point or particle size.",
+    "hint": "Physical properties."
+  },
+  {
+    "q": "Systematic vs. casual investigation?",
+    "options": [
+      "Expensive gear",
+      "Structured/repeatable",
+      "Pros only",
+      "Computer-based"
+    ],
+    "correct": 1,
+    "reason": "Systematic investigations follow a structured, repeatable process that minimizes errors.",
+    "hint": "Structured process."
+  },
+  {
+    "q": "Scientific response to unproven claims?",
+    "options": [
+      "Accept",
+      "Seek empirical evidence",
+      "Ignore",
+      "Repeat"
+    ],
+    "correct": 1,
+    "reason": "Scientists look for empirical evidence before accepting unproven claims.",
+    "hint": "Evidence-seeking."
+  },
+  {
+    "q": "Focus of ecosystem study?",
+    "options": [
+      "Predators",
+      "Biotic and abiotic interactions",
+      "Sunlight",
+      "Species count"
+    ],
+    "correct": 1,
+    "reason": "Ecosystem studies focus on interactions between living things and their non-living environment.",
+    "hint": "Interdependence."
+  },
+  {
+    "q": "Meaning of 'data analysis'?",
+    "options": [
+      "Gathering",
+      "Finding trends",
+      "Drawing equipment",
+      "Making up conclusions"
+    ],
+    "correct": 1,
+    "reason": "Data analysis involves finding trends and patterns in the collected data.",
+    "hint": "Finding trends."
+  },
+  {
+    "q": "Step after completing an experiment?",
+    "options": [
+      "Compare to hypothesis",
+      "Publish",
+      "Throw away",
+      "Start unrelated study"
+    ],
+    "correct": 0,
+    "reason": "After an experiment, results are compared with the hypothesis to evaluate it.",
+    "hint": "Evaluation."
+  },
+  {
+    "q": "Why is Earth 'unique life-sustaining'?",
+    "options": [
+      "Largest",
+      "Goldilocks zone/atmosphere",
+      "Gravity",
+      "Moons"
+    ],
+    "correct": 1,
+    "reason": "Earth's position in the Goldilocks zone and its atmosphere allow liquid water and suitable temperatures for life.",
+    "hint": "Goldilocks zone."
+  },
+  {
+    "q": "Looking through a microscope is:",
+    "options": [
+      "Observation",
+      "Experimentation",
+      "Hypothesizing",
+      "Peer review"
+    ],
+    "correct": 0,
+    "reason": "Using a microscope to see details is an observation using extended senses.",
+    "hint": "Sensory expansion."
+  },
+  {
+    "q": "If data supports hypothesis?",
+    "options": [
+      "Proven forever",
+      "Consistent in this instance",
+      "Perfect experiment",
+      "Law"
+    ],
+    "correct": 1,
+    "reason": "Support means the data are consistent with the hypothesis in this case, not absolute proof.",
+    "hint": "Consistency."
+  },
+  {
+    "q": "How models use planetary cycles?",
+    "options": [
+      "Predict patterns",
+      "Replace moon",
+      "Make observations unnecessary",
+      "Force changes"
+    ],
+    "correct": 0,
+    "reason": "Models of planetary cycles are used to predict patterns such as eclipses and seasons.",
+    "hint": "Predictive tool."
+  },
+  {
+    "q": "Focus of classification of materials?",
+    "options": [
+      "Chemistry",
+      "Physics",
+      "Biology",
+      "Astronomy"
+    ],
+    "correct": 0,
+    "reason": "Chemistry focuses on matter, including classification of materials by their properties.",
+    "hint": "Matter study."
+  },
+  {
+    "q": "Role of a question?",
+    "options": [
+      "Determines test goal",
+      "Waste of time",
+      "Test patience",
+      "Replaces experiment"
+    ],
+    "correct": 0,
+    "reason": "A clear question defines the goal and scope of the investigation.",
+    "hint": "Defining the goal."
+  },
+  {
+    "q": "Why is ethics relevant?",
+    "options": [
+      "Dictates study topics",
+      "Honesty/avoiding harm",
+      "Expense",
+      "Lab coat color"
+    ],
+    "correct": 1,
+    "reason": "Ethics ensure honesty and protect people, animals, and the environment from harm.",
+    "hint": "Integrity and safety."
+  },
+  {
+    "q": "What is a 'scientific law'?",
+    "options": [
+      "A guess",
+      "A rule based on repeated observation",
+      "A theory's replacement",
+      "An opinion"
+    ],
+    "correct": 1,
+    "reason": "Scientific laws summarize patterns observed repeatedly in nature.",
+    "hint": "Observed rule."
+  },
+  {
+    "q": "What is the final goal of investigation?",
+    "options": [
+      "To get an A grade",
+      "To understand phenomena",
+      "To buy equipment",
+      "To be famous"
+    ],
+    "correct": 1,
+    "reason": "The goal of scientific investigation is to understand natural phenomena and the world around us.",
+    "hint": "The goal of science." }
 ],
         "Advance": [
   { "q": "When interpreting experimental data, why is statistical variance often more informative than the mean alone?", "options": ["It indicates sample size", "It quantifies consistency and reliability", "It guarantees hypothesis accuracy", "It is required for axes"], "correct": 1, "reason": "Variance reveals the spread of data.", "hint": "Spread of data." },
